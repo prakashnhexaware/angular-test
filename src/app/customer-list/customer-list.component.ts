@@ -63,12 +63,10 @@ export class CustomerListComponent implements OnInit {
   }
 
   doEdit(ind){
-      console.log("Called Edit");
       this.customers[ind].isEditing = true;
   }
 
   doSave(ind) {
-    console.log("Called Save");
     this.customers[ind].isEditing = false;
   }
 
