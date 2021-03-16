@@ -57,8 +57,8 @@
         <tbody>
             <tr *ngFor="let customer of customers; let i = index">
                 <td>{{i + 1}}</td>
-                <td>{{customer.name}}</td>
-                <td>{{customer.email}}</td>
+                <td><span *ngIf="!customer.isEditing">{{customer.name}}</span><input type="text" [(ngModel)]="customer.name" *ngIf="customer.isEditing" /></td>
+                <td><span *ngIf="!customer.isEditing">{{customer.email}}</span><input type="text" [(ngModel)]="customer.email" *ngIf="customer.isEditing"/></td>
                 <td><button (click)="doEdit(i)" *ngIf="!customer.isEditing">EDIT</button><button (click)="doSave(i)" *ngIf="customer.isEditing">SAVE</button></td>
             </tr>
         </tbody>
