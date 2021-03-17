@@ -57,7 +57,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   onClear() {
-      // clear errors and reset ticket fields
+      // clear errors and reset customer fields
       this.submitted = false;
       this.t.reset();
   }
