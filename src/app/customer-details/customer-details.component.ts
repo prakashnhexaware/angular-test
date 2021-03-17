@@ -19,19 +19,19 @@ export class CustomerDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.dynamicForm = this.formBuilder.group({
-      numberOfTickets: ['1', Validators.required],
-        tickets: new FormArray([])
+      numberOfCustomers: ['1', Validators.required],
+        customers: new FormArray([])
     });
-    const numberOfTickets = 1;
-    if (this.t.length < numberOfTickets) {
-        for (let i = this.t.length; i < numberOfTickets; i++) {
+    const numberOfCustomers = 1;
+    if (this.t.length < numberOfCustomers) {
+        for (let i = this.t.length; i < numberOfCustomers; i++) {
             this.t.push(this.formBuilder.group({
                 name: ['', Validators.required],
                 email: ['', [Validators.required, Validators.email]]
             }));
         }
     } else {
-        for (let i = this.t.length; i >= numberOfTickets; i--) {
+        for (let i = this.t.length; i >= numberOfCustomers; i--) {
             this.t.removeAt(i);
         }
     }
@@ -39,7 +39,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
   // convenience getters for easy access to form fields
   get f() { return this.dynamicForm.controls; }
-  get t() { return this.f.tickets as FormArray; }
+  get t() { return this.f.customers as FormArray; }
 
   onSubmit() {
       this.submitted = true;
@@ -49,7 +49,7 @@ export class CustomerDetailsComponent implements OnInit {
       }
 
       console.log("Dynamic Form Value"+ this.dynamicForm.value);
-      this.customers.push(this.dynamicForm.value.tickets[0]);
+      this.customers.push(this.dynamicForm.value.customers[0]);
       this.customers[this.customers.length - 1].isEditing = false;
       this.dataService.serviceData.push(this.customers[0]);
       this.router.navigate(['customer-list']);
