@@ -14,6 +14,7 @@ export class CustomerListComponent implements OnInit {
     public dataService: DataService) { }
 
   ngOnInit(): void {
+    let isPushed = false;
     console.log("Service Data", this.dataService.serviceData);
     this.customers = [];
     this.customersService.getCustomers().then(resp =>{
@@ -22,10 +23,16 @@ export class CustomerListComponent implements OnInit {
         for(var ind=0;ind<this.customers.length; ind++){
             this.customers[ind].isEditing = false;
         }
+        isPushed = true;
         if(this.dataService.serviceData.length > 0){
             this.customers.push(this.dataService.serviceData[0]);
         }
     });
+    if(!isPushed) {
+        if(this.dataService.serviceData.length > 0){
+            this.customers.push(this.dataService.serviceData[0]);
+        }
+    }
   }
  
   doEdit(ind){
