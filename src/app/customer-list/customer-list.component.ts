@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import {CustomersService} from '../services/customers.service';
+import { DataService } from '../services/data.service';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class CustomerListComponent implements OnInit {
   submitted = false;
   customers : any[];
   constructor(private formBuilder: FormBuilder,
-    public customersService: CustomersService) { }
+    public customersService: CustomersService,
+    public dataService: DataService) { }
 
   ngOnInit(): void {
     this.dynamicForm = this.formBuilder.group({
@@ -33,12 +35,16 @@ export class CustomerListComponent implements OnInit {
             this.t.removeAt(i);
         }
     }
+    console.log("Service Data", this.dataService.serviceData);
     this.customers = [];
     this.customersService.getCustomers().then(resp =>{
         const data: any = resp;
         this.customers = data;
         for(var ind=0;ind<this.customers.length; ind++){
             this.customers[ind].isEditing = false;
+        }
+        if(this.dataService.serviceData.length > 0){
+            this.customers.push(this.dataService.serviceData[0]);
         }
     });
   }

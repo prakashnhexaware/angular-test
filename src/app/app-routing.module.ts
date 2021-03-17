@@ -4,11 +4,11 @@ import { CustomerDetailsComponent } from '../app/customer-details/customer-detai
 import { CustomerListComponent } from '../app/customer-list/customer-list.component';
 
 const routes: Routes = [{
-  path: '',
+  path: 'customer-list',
   component: CustomerListComponent,
 },
 {
-  path: 'customer-details',
+  path: '',
   component: CustomerDetailsComponent,
 }];
 
