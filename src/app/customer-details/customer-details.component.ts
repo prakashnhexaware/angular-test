@@ -41,22 +41,6 @@ export class CustomerDetailsComponent implements OnInit {
   get f() { return this.dynamicForm.controls; }
   get t() { return this.f.tickets as FormArray; }
 
-  onChangeTickets(e) {
-    const numberOfTickets = e.target.value || 0;
-    if (this.t.length < numberOfTickets) {
-        for (let i = this.t.length; i < numberOfTickets; i++) {
-            this.t.push(this.formBuilder.group({
-                name: ['', Validators.required],
-                email: ['', [Validators.required, Validators.email]]
-            }));
-        }
-    } else {
-        for (let i = this.t.length; i >= numberOfTickets; i--) {
-            this.t.removeAt(i);
-        }
-    }
-  }
-
   onSubmit() {
       this.submitted = true;
       // stop here if form is invalid
