@@ -1,19 +1,5 @@
 <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()"> <!-- *ngIf="!submitted"-->
     <div class="card m-3">
-        <!--<div class="card-body">
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Number of Tickets</label>
-                    <select formControlName="numberOfTickets" class="form-control" (change)="onChangeTickets($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfTickets.errors }">
-                        <option value=""></option>
-                        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">{{i}}</option>
-                    </select>
-                    <div *ngIf="submitted && f.numberOfTickets.errors" class="invalid-feedback">
-                        <div *ngIf="f.numberOfTickets.errors.required">Number of tickets is required</div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
         <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush">
             <div class="list-group-item">
                 <h5 class="card-title">Customer {{customers.length + 1}}</h5>
@@ -38,7 +24,6 @@
         </div>
         <div class="card-footer text-center">
             <button class="btn btn-primary mr-1">Submit</button>
-            <!--<button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button> -->
             <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
         </div>
     </div>
