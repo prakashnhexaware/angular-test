@@ -1,6 +1,6 @@
 <div> <!-- *ngIf="submitted"-->
     <h1>Customers List</h1>
-    <table border="1">
+    <table class="customer-list-table" cellspacing="0">
         <thead>
             <tr>
                 <th>Customer No.</th>
@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let customer of customers; let i = index">
-                <td>{{i + 1}}</td>
+                <td class="customer-list-count">{{i + 1}}</td>
                 <td><span *ngIf="!customer.isEditing">{{customer.name}}</span><input type="text" [(ngModel)]="customer.name" *ngIf="customer.isEditing" /></td>
                 <td><span *ngIf="!customer.isEditing">{{customer.email}}</span><input type="text" [(ngModel)]="customer.email" *ngIf="customer.isEditing"/></td>
                 <td><button (click)="doEdit(i)" *ngIf="!customer.isEditing">EDIT</button><button (click)="doSave(i)" *ngIf="customer.isEditing">SAVE</button></td>
