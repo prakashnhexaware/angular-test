@@ -1,8 +1,8 @@
 <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()"> <!-- *ngIf="!submitted"-->
-    <div class="card m-3">
+    <h1 class="card-title">Customer Details</h1>
+    <div class="card m-3 card-wrapper">
         <div *ngFor="let customer of t.controls; let i = index" class="list-group list-group-flush">
             <div class="list-group-item">
-                <h1 class="card-title">Customer Details</h1>
                 <div [formGroup]="customer" class="form-row">
                     <div class="form-group col-6">
                         <label>Name</label>
